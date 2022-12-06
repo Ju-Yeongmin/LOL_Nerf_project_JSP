@@ -77,7 +77,8 @@
 }
 
 .content {
-    margin-left: 250px;
+	align-content: center;
+    /* margin-left: 250px; */
     min-height: 100vh;
     background: var(--dark);
     transition: 0.5s;
