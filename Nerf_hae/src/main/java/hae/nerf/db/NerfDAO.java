@@ -4,10 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class NerfDAO {
 
@@ -62,8 +68,25 @@ public class NerfDAO {
 		} finally {
 			closeDB();
 		}
+	}
+	
+	public List<CrawlingVO> getOPGG() throws Exception {
+		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get();
 		
 		
+		Elements c_ranks = doc.select(".css-3bfwic.e1oulx2j4 span");
+		Elements c_name = doc.select(".css-cym2o0.e1oulx2j6 a strong") ; 
+		Elements c_image;
+		Elements c_tiers = doc.select(".css-ew1afn.e1oulx2j3");
+		Elements c_winrate;
+		Elements c_pickrate;
+		Elements c_banrate;
+		
+		System.out.println(c_ranks);
+		System.out.println(c_name);
+		System.out.println(c_tiers);
+		
+		return null;
 	}
 	
 	
