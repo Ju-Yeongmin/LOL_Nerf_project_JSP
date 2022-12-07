@@ -72,19 +72,27 @@ public class NerfDAO {
 	
 	public List<CrawlingVO> getOPGG() throws Exception {
 		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get();
+//		Document doc = Jsoup.connect("https://www.op.gg/champions").get();
 		
 		
-		Elements c_ranks = doc.select(".css-3bfwic.e1oulx2j4 span");
-		Elements c_name = doc.select(".css-cym2o0.e1oulx2j6 a strong") ; 
-		Elements c_image;
-		Elements c_tiers = doc.select(".css-ew1afn.e1oulx2j3");
-		Elements c_winrate;
+		
+		Elements c_ranks = doc.select(".css-3bfwic.e1oulx2j4 span ");
+		Elements c_names = doc.select(".css-jgru8w.e1oulx2j7 .css-cym2o0.e1oulx2j6 a strong"); 
+		Elements c_images;
+		Elements c_tiers = doc.select(".css-ew1afn.e1oulx2j3 value");
+		Elements c_winrate = doc.select(".css-1wvfkid.exo2f211");
 		Elements c_pickrate;
 		Elements c_banrate;
 		
-		System.out.println(c_ranks);
-		System.out.println(c_name);
-		System.out.println(c_tiers);
+		
+		for (int i = 0; i < c_ranks.size(); i+=2) {
+			System.out.println(c_ranks.get(i).text());
+			//System.out.println(c_names.get(i/2).text());
+		}
+		
+		System.out.println(c_names);
+		System.out.println(c_winrate);
+			
 		
 		return null;
 	}
