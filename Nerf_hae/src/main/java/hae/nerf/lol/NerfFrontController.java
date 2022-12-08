@@ -55,6 +55,21 @@ public class NerfFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/FightRecord.hae")) {
+			System.out.println(" C : /FightRecord.hae 호");
+			System.out.println(" C : 패턴3 ");
+			
+			// FightRecordAction
+			action = new FightRecordAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
 		
 		
 		System.out.println(" C : 가상주소 매핑 끝!\n ");
