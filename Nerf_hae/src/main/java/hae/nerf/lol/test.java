@@ -1,6 +1,7 @@
 package hae.nerf.lol;
 
 import java.net.*;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +16,7 @@ public class test {
 	public static void main(String[] args) throws IOException, JSONException {
 		
 		String name ="돌아온 왕오빠";
-		String key ="RGAPI-830d636f-46bb-4598-8bf0-8f04d616d083";
+		String key ="RGAPI-ead9c3f5-4f21-46f6-98fc-c32466001980";
 		
 		URL url = new URL("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+URLEncoder.encode(name,"UTF-8")+"?api_key="+key);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -34,7 +35,7 @@ public class test {
 		String puid = (String)byName.get("puuid");
 		System.out.println(puid);
 		
-		url = new URL("https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/smlK5hy2uOcmezQoZLkZZwg9mw3_CLkQYKN42M105ia1U_0m1ccg92CFnRvq7PA2ROIa6pLxIfVbUg/ids?start=0&count=20&api_key=RGAPI-830d636f-46bb-4598-8bf0-8f04d616d083");
+		url = new URL("https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/"+puid+"/ids?start=0&count=20&api_key="+key);
 		conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
@@ -68,17 +69,53 @@ public class test {
 			
 			JSONObject obj = new JSONObject(sb.toString());
 			JSONObject meta = (JSONObject) obj.get("metadata");
-			JSONArray howPart = (JSONArray)meta.get("participants");
+			JSONArray Parts = (JSONArray)meta.get("participants");
 			
 			int p=0;
-			for (int j=0;j<howPart.length();j++) {
-				String part = (String)howPart.get(j);
+			
+			/** 경기 20개 받아서 등록
+			 * 
+			 * 
+			 */
+			for (int j=0;j<Parts.length();j++) {
+				HashMap<String, Object> hm = new HashMap<String,Object>();
 				
-				if(part.equals("smlK5hy2uOcmezQoZLkZZwg9mw3_CLkQYKN42M105ia1U_0m1ccg92CFnRvq7PA2ROIa6pLxIfVbUg")) {
+				String part = (String)Parts.get(j);
+				
+				if(part.equals(puid)) {
 					p = i;
 					break;
 				}
 			}
+			
+			
+			JSONObject info = (JSONObject) obj.get("info");
+			JSONArray part = (JSONArray) info.get("participants");
+			JSONObject memInfo = (JSONObject)part.get(p);
+			JSONArray teams = (JSONArray)info.get("teams");
+			JSONObject team;
+			if (p<5) {
+			team = (JSONObject)teams.get(0);
+			} else {
+				team = (JSONObject)teams.get(1);
+			}
+			JSONObject tobj = (JSONObject)team.get("objectives");
+			JSONObject tchamp = (JSONObject)tobj.get("champion");
+			JSONObject perks = (JSONObject)memInfo.get("perks");
+			
+			
+			String win = (String)team.get("win");
+			String champName = (String)memInfo.get("championName");
+			String queueId = (String)info.get("queueId");
+			int kills = Integer.parseInt((String)memInfo.get("kills"));
+			int deaths = Integer.parseInt((String)memInfo.get("deaths"));
+			int assists = Integer.parseInt((String)memInfo.get("assists"));
+			int tKills = (int) tchamp.get("kills");
+			int summoner1Id = (int)memInfo.get("summoner1Id");
+			int summoner2Id = (int)memInfo.get("summoner2Id");
+			String statPerks = perks.get("statPerks").toString();
+			
+			
 		}
 //		HttpURLConnection conn1 = (HttpURLConnection) url.openConnection();
 //		conn1.setRequestMethod("GET");
