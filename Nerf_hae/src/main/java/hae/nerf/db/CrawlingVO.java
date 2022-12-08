@@ -1,20 +1,20 @@
 package hae.nerf.db;
 
 public class CrawlingVO {
-	private String c_rank;
+	private int c_no;
 	private String c_name;
 	private String c_image;
 	private String c_tier;
 	private String c_winrate;
 	private String c_pickrate;
 	private String c_banrate;
+	private String c_category;
 	
-	
-	public String getC_rank() {
-		return c_rank;
+	public int getC_no() {
+		return c_no;
 	}
-	public void setC_rank(String c_rank) {
-		this.c_rank = c_rank;
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
 	}
 	public String getC_name() {
 		return c_name;
@@ -52,12 +52,20 @@ public class CrawlingVO {
 	public void setC_banrate(String c_banrate) {
 		this.c_banrate = c_banrate;
 	}
+	public String getC_category() {
+		return c_category;
+	}
+	public void setC_category(String c_category) {
+		this.c_category = c_category;
+	}
 	
 	
 	@Override
 	public String toString() {
-		return "CrawlingVO [c_rank=" + c_rank + ", c_name=" + c_name + ", c_image=" + c_image + ", c_tier=" + c_tier
-				+ ", c_winrate=" + c_winrate + ", c_pickrate=" + c_pickrate + ", c_banrate=" + c_banrate + "]";
+		return "CrawlingVO [c_no=" + c_no + ", c_name=" + c_name + ", c_image=" + c_image + ", c_tier=" + c_tier
+				+ ", c_winrate=" + c_winrate + ", c_pickrate=" + c_pickrate + ", c_banrate=" + c_banrate
+				+ ", c_categry=" + c_category + "]";
 	}
+	
 	
 }
