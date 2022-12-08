@@ -67,8 +67,19 @@ public class NerfFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		else if (command.equals("/ChampionUpdate.hae")) {
+			System.out.println(" C : /ChampionUpdate.hae 호출 ");
+			System.out.println(" C : 패턴2 ");
 			
+			// ChampionUpdateAction
+			action = new ChampionInfoAction();
 			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

@@ -286,7 +286,9 @@ public class NerfDAO {
 		return list;
 	}
 	
-	
+	/**
+	 *	DB에 크롤링 데이터 저장 메서드 
+	 */
 	public void insertChampionInfo(List<CrawlingVO> list) {
 		try {
 			
@@ -318,6 +320,60 @@ public class NerfDAO {
 			}
 			
 			System.out.println(" DAO : 챔피언 정보 저장! ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	
+	
+	/**
+	 * 카테고리(탑,정글,미드,원딜,서폿)별로 DB 챔피언 통계 데이터 불러오는 메서드
+	 */
+	public List<CrawlingVO> getChampionInfo(String category) {
+		List<CrawlingVO> list = new ArrayList<CrawlingVO>();
+		
+		try {
+			con = getConnection();
+			sql = "select * from championinfo where c_category = ? order by c_tier, c_winrate desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, category);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				CrawlingVO vo = new CrawlingVO();
+				
+				vo.setC_no(rs.getInt("c_no"));
+				vo.setC_name(rs.getString("c_name"));
+				vo.setC_banrate(rs.getString("c_banrate"));
+				vo.setC_image(rs.getString("c_image"));
+				vo.setC_pickrate(rs.getString("c_pickrate"));
+				vo.setC_tier(rs.getString("c_tier"));
+				vo.setC_winrate(rs.getString("c_winrate"));
+				vo.setC_category(category);
+				
+				list.add(vo);
+			}
+			System.out.println(" DAO : 챔피언 정보 조회 완료 ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return list;
+	}
+	
+	public void removeChampionInfo() {
+		try {
+			con = getConnection();
+			sql = "delete from championinfo";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
