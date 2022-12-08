@@ -33,13 +33,19 @@
 </head>
 
 <body>
-
+		<!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
 
         <!-- Content Start -->
         <div class="content" style="width: 580px; margin-top: 300px; margin-left: auto; margin-right: auto;">
         
 	        	<a href="index.html" class="navbar-brand mx-4 mb-3">
-	                    <h3 class="text-primary" style="font-size: calc(4rem + .6vw); padding-left: 120px;">Nerf.hae</h3>
+	                    <h3 class="text-primary" style="font-size: calc(4rem + .6vw); padding-left: 70px; letter-spacing: 20px;">Nerf.hae</h3>
 	            </a>
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
@@ -51,9 +57,9 @@
             <!-- Navbar End -->
        		
        		<br>
-            <div>
-           		<a href="./ChampionInfo.hae">
-            	챔피언 통계
+            <div align="center">
+           		<a href="./ChampionInfo.hae" style="font-size: 20px; letter-spacing: 5px">
+            		챔피언 통계
             	</a> 
             </div>
 				          
