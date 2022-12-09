@@ -1,8 +1,5 @@
 package hae.nerf.db;
 
-import lombok.Data;
-
-
 public class CrawlingVO {
 	private int c_no;
 	private String c_name;
