@@ -1,5 +1,11 @@
 package hae.nerf.db;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +18,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -76,7 +85,7 @@ public class NerfDAO {
 	 *	op.gg 크롤링 메서드 (탑)
 	 */
 	public List<CrawlingVO> getOPGGtop() throws Exception {
-		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get();
+		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get(); //겟방식으로 호출하겠다
 		
 		Elements c_names = doc.select(".css-jgru8w.e1oulx2j7 .css-cym2o0.e1oulx2j6 a strong"); 
 		Elements c_images = doc.select(".css-cym2o0.e1oulx2j6 a img");
@@ -88,12 +97,13 @@ public class NerfDAO {
 		for (int i = 0; i < c_names.size(); i++) {
 //			System.out.println(c_ranks.get(i).text());
 //			System.out.println(i);
-//			System.out.println(c_names.get(i).text());
+//			System.out.println(c_names.get(i));
+//			System.out.println(c_allrate.get(i));
 //			System.out.println(c_tiers.get(i).text());
 //			System.out.println("이미지 : " + c_images.get(i).attr("src"));
 //			System.out.println("승률 : " + c_allrate.get(i*3).text());
 //			System.out.println("픽률 : " + c_allrate.get(i*3+1).text());
-//			System.out.println("밴율 : " + c_allrate.get(i*3+2).text());
+//			System.out.println("밴률 : " + c_allrate.get(i*3+2).text());
 			Element c_name = c_names.get(i);
 			Element c_tier = c_tiers.get(i);
 			Element c_image = c_images.get(i);
@@ -309,7 +319,39 @@ public class NerfDAO {
 				}
 				
 				pstmt.setInt(1, c_no);
-				pstmt.setString(2, list.get(i).getC_name());
+				
+				// 첫글자 대문자, 나머지 소문자, 특수문자 전부 제거
+				String firstLetter = list.get(i).getC_name().replaceAll("[^A-Z^a-z]", "").substring(0, 1);
+		        String remainLetter = list.get(i).getC_name().replaceAll("[^A-Z^a-z]", "").substring(1);
+		        firstLetter = firstLetter.toUpperCase();
+		        remainLetter = remainLetter.toLowerCase();
+		        String c_name = firstLetter + remainLetter;
+				
+		        if (c_name.equals("Drmundo")) {
+		        	c_name = "DrMundo";
+		        } else if (c_name.equals("Jarvaniv")) {
+		        	c_name = "JarvanIV";
+		        } else if (c_name.equals("Kogmaw")) {
+		        	c_name = "KogMaw";
+		        } else if (c_name.equals("Ksante")) {
+		        	c_name = "KSante";
+		        } else if (c_name.equals("Leesin")) {
+		        	c_name = "LeeSin";
+		        } else if (c_name.equals("Tahmkench")) {
+		        	c_name = "TahmKench";
+		        } else if (c_name.equals("Masteryi")) {
+		        	c_name = "MasterYi";
+		        } else if (c_name.equals("Missfortune")) {
+		        	c_name = "MissFortune";
+		        } else if (c_name.equals("Nunuwillump")) {
+		        	c_name = "Nunu";
+		        } else if (c_name.equals("Reksai")) {
+		        	c_name = "RekSai";
+		        }
+		        
+		        
+		        pstmt.setString(2, c_name);
+		        
 				pstmt.setString(3, list.get(i).getC_image());
 				pstmt.setString(4, list.get(i).getC_tier());
 				pstmt.setString(5, list.get(i).getC_winrate());
@@ -427,5 +469,76 @@ public class NerfDAO {
 		
 		
 	}
+	
+	public List<String> getChampionNames() {
+		List<String> list = new ArrayList<String>();
+		
+		try {
+			con = getConnection();
+			sql = "select distinct c_name from championinfo order by c_name";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+			System.out.println(" DAO :  ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return list;
+	}
+	
+	
+	public void championJsonParsing() {
+		final String REQUEST_URL = "http://ddragon.leagueoflegends.com/cdn/12.23.1/data/ko_KR/champion.json";
+		
+		try {
+			URL requestURL = new URL(REQUEST_URL);
+			HttpURLConnection conn = (HttpURLConnection)requestURL.openConnection();
+			
+			conn.setRequestMethod("GET");
+			conn.setDoInput(true);
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			String readline = null;
+			StringBuffer response = new StringBuffer();
+			
+			while ( (readline = br.readLine()) != null) {
+				response.append(readline);
+			}
+			
+			JSONObject responseBody = new JSONObject(response.toString());
+			
+			JSONObject data = responseBody.getJSONObject("data");
+			List<String> nameList = getChampionNames();
+			
+			for (int i = 0; i < nameList.size(); i++) {
+				JSONObject ChampionDetail = data.getJSONObject(nameList.get(i));
+				System.out.println(ChampionDetail.get("id"));
+				System.out.println(ChampionDetail.get("key"));
+				System.out.println(ChampionDetail.get("name"));
+				System.out.println(ChampionDetail.get("title"));
+				System.out.println("---------------------------------------");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	
+	
+	
+	
+	
 	
 }
