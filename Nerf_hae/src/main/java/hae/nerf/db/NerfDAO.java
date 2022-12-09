@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.Context;
@@ -382,5 +383,49 @@ public class NerfDAO {
 		}
 	}
 	
+	public void insertMatch(HashMap<String, Object> hm) {
+		int match_num=1;
+		try {
+			con = getConnection();
+			sql = "select max(match_num) from matches";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				match_num = rs.getInt(1)+1;
+			}
+			
+			sql = "insert into matches values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, match_num);
+			pstmt.setString(2,(String)hm.get("matchid"));
+			pstmt.setString(3,hm.get("win").toString());
+			pstmt.setInt(4, (int)hm.get("u_num"));
+			pstmt.setString(5,(String)hm.get("champion_Name"));
+			pstmt.setInt(6, (int)hm.get("queueid"));
+			pstmt.setString(7,(String)hm.get("kda"));
+			pstmt.setInt(8, (int)hm.get("team_total_kills"));
+			pstmt.setString(9,(String)hm.get("summoner_spell"));
+			pstmt.setString(10,(String)hm.get("statPerks"));
+			pstmt.setString(11,(String)hm.get("primary_perks"));
+			pstmt.setString(12,(String)hm.get("sub_perks"));
+			pstmt.setInt(13, (int)hm.get("level"));
+			pstmt.setInt(14, (int)hm.get("gold"));
+			pstmt.setInt(15, (int)hm.get("cs"));
+			pstmt.setInt(16, (int)hm.get("playtime"));
+			pstmt.setInt(17, (int)hm.get("detector_ward"));
+			pstmt.setString(18,(String)hm.get("wardkp"));
+			pstmt.setString(19,(String)hm.get("items"));
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+	}
 	
 }

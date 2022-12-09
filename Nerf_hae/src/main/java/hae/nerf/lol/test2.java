@@ -103,7 +103,7 @@ public class test2 {
 //			
 //			
 //		}
-		URL url = new URL("https://asia.api.riotgames.com/lol/match/v5/matches/KR_6244885215?api_key=RGAPI-ead9c3f5-4f21-46f6-98fc-c32466001980");
+		URL url = new URL("https://asia.api.riotgames.com/lol/match/v5/matches/KR_6244885215?api_key=RGAPI-d329c0c0-829a-4340-84f2-482d69190e4b");
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
@@ -142,10 +142,35 @@ public class test2 {
 		JSONArray part = (JSONArray) obj2.get("participants");
 		JSONObject memInfo = (JSONObject)part.get(p);
 		JSONObject perks = (JSONObject)memInfo.get("perks");
-		String statPerks = perks.get("statPerks").toString();
-		JSONArray pStyle = (JSONArray)perks.get("styles");
-		System.out.println(pStyle.get(0));
-		JSONArray obj3 = (JSONArray) obj2.get("participants");
+		int champLevel = (int)memInfo.get("champLevel");
+		int gold = (int)memInfo.get("goldEarned");
+		int detectWard = (int)memInfo.getInt("detectorWardsPlaced");
+		String items = (int)memInfo.get("item0")+","+(int)memInfo.get("item1")+","+(int)memInfo.get("item2")+","
+				+(int)memInfo.get("item3")+","+(int)memInfo.get("item4")+","+(int)memInfo.get("item5")+","+(int)memInfo.get("item6");
+		System.out.println(items);
+//		String statPerks = perks.get("statPerks").toString().replaceAll("[{}]", "");
+//		JSONArray Styles = (JSONArray)perks.get("styles");
+//		JSONObject pStyle = (JSONObject)Styles.get(0);
+//		JSONObject sStyle = (JSONObject)Styles.get(1);
+//		JSONArray pStyles = (JSONArray)pStyle.get("selections");
+//		JSONArray sStyles = (JSONArray)sStyle.get("selections");
+//		StringBuilder sb2 = new StringBuilder();
+//		sb2.append(pStyle.get("style")+",");
+////		sb2.append();
+//		for (int i=0;i<pStyles.length();i++) {
+//			JSONObject a = (JSONObject)pStyles.get(i);
+//			sb2.append(a.get("perk")+",");
+//		}
+//		StringBuilder sb3 = new StringBuilder();
+//		sb3.append(sStyle.get("style")+",");
+//		for (int i=0;i<sStyles.length();i++) {
+//			JSONObject a = (JSONObject)sStyles.get(i);
+//			sb3.append(a.get("perk")+",");
+//		}
+//		
+//		String priStyle = sb2.substring(0,sb2.toString().length()-1);
+//		System.out.println(sb3.substring(0,sb3.toString().length()-1));
+//		JSONArray obj3 = (JSONArray) obj2.get("participants");
 		
 	}
 }

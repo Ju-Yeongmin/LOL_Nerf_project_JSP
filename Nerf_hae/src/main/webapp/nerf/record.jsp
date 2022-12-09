@@ -54,7 +54,7 @@
 <!--                             <h6 class="mb-4">Testimonial</h6> -->
                             <div class="owl-carousel testimonial-carousel">
                                 <div class="testimonial-item">
-                                    <img style="mar" class="img-fluid mb-4" src="img/5572.png" style="width: 128px; height: 128px; display: inline; float: left;">
+                                    <img class="img-fluid" src="img/5572.png" style="width: 128px; height: 128px; display: inline; float: left; ">
                                     <div style="padding: 1px 6px; margin-left: 140px; margin-bottom: 0px; margin-right: 954px;" class="alert alert-dark" role="alert">
                                 		레벨 114
                             		</div>
