@@ -15,6 +15,8 @@ public class NerfAction implements Action {
 		NerfDAO dao = new NerfDAO();
 		dao.test();
 		
+		dao.championJsonParsing();
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./nerf/nerfMain.jsp");

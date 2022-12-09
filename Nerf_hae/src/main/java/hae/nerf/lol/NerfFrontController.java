@@ -73,7 +73,7 @@ public class NerfFrontController extends HttpServlet {
 			System.out.println(" C : 패턴2 ");
 			
 			// ChampionUpdateAction
-			action = new ChampionInfoAction();
+			action = new ChampionUpdateAction();
 			
 			try {
 				forward = action.execute(request, response);
