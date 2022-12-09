@@ -54,12 +54,13 @@
 <!--                             <h6 class="mb-4">Testimonial</h6> -->
                             <div class="owl-carousel testimonial-carousel">
                                 <div class="testimonial-item">
-                                    <img class="img-fluid mb-4" src="img/5572.png" style="width: 128px; height: 128px; display: inline; float: left;">
-                                    <div style="padding: 1px 6px; margin-left: 148px; margin-bottom: 0px; margin-right: 946px;" class="alert alert-dark" role="alert">
+                                    <img style="mar" class="img-fluid mb-4" src="img/5572.png" style="width: 128px; height: 128px; display: inline; float: left;">
+                                    <div style="padding: 1px 6px; margin-left: 140px; margin-bottom: 0px; margin-right: 954px;" class="alert alert-dark" role="alert">
                                 		레벨 114
                             		</div>
-                                   	<span style="text-align: left; padding-left: 20px; font-size: 30px; font-weight: bold; line-height: 52px;">아이디</span> 
-                                    <p>Profession</p>
+                                   	<span style="text-align: left; padding-left: 10px; font-size: 30px; font-weight: bold; line-height: 52px;">아이디</span>
+                                   	<br>
+                                    <button type="button" style="margin-top: 18px; margin-left:12px;" class="btn btn-sm btn-primary">전적 갱신</button>
                                     <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
                                 </div>
                                
