@@ -75,7 +75,7 @@ public class NerfDAO {
 	 *	op.gg 크롤링 메서드 (탑)
 	 */
 	public List<CrawlingVO> getOPGGtop() throws Exception {
-		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get();
+		Document doc = Jsoup.connect("https://www.op.gg/champions?region=global&tier=platinum_plus&position=top").get(); //겟방식으로 호출하겠다
 		
 		Elements c_names = doc.select(".css-jgru8w.e1oulx2j7 .css-cym2o0.e1oulx2j6 a strong"); 
 		Elements c_images = doc.select(".css-cym2o0.e1oulx2j6 a img");
@@ -92,7 +92,7 @@ public class NerfDAO {
 //			System.out.println("이미지 : " + c_images.get(i).attr("src"));
 //			System.out.println("승률 : " + c_allrate.get(i*3).text());
 //			System.out.println("픽률 : " + c_allrate.get(i*3+1).text());
-//			System.out.println("밴율 : " + c_allrate.get(i*3+2).text());
+//			System.out.println("밴률 : " + c_allrate.get(i*3+2).text());
 			Element c_name = c_names.get(i);
 			Element c_tier = c_tiers.get(i);
 			Element c_image = c_images.get(i);

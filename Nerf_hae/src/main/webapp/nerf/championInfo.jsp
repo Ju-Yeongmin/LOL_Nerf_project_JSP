@@ -35,6 +35,14 @@
 	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
+    $(window).on('load', function() {
+        setTimeout(function(){
+            $("#waiting").fadeOut();
+        }, 300);
+    }); // 로딩 대기 화면(안될수도있음)
+    
+</script>
+	<script type="text/javascript">
 		$(document).ready(function(){
 			if ( $('#param_ym').val() == "jug" ) {
 				$('#top').css('color','#FFFFFF')
@@ -131,10 +139,10 @@
 		                                	<c:forEach var="vo" items="${jugChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td>
+			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.c_name }
-			                                        </td>
+			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
@@ -148,10 +156,10 @@
 		                                	<c:forEach var="vo" items="${midChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td>
+			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.c_name }
-			                                        </td>
+			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
@@ -165,10 +173,10 @@
 		                                	<c:forEach var="vo" items="${adcChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td>
+			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.c_name }
-			                                        </td>
+			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
@@ -182,10 +190,10 @@
 		                                	<c:forEach var="vo" items="${supChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td>
+			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.c_name }
-			                                        </td>
+			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
@@ -199,10 +207,10 @@
 	                                    	<c:forEach var="vo" items="${topChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td>
+			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.c_name }
-			                                        </td>
+			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
