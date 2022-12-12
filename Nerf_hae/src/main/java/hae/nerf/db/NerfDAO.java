@@ -658,7 +658,63 @@ public class NerfDAO {
 		}
 	}
 	
-	
+	public List getChampionDetail(String id) {
+		List championDetailList = new ArrayList();
+		ChampionDetailVO dvo = null;
+		try {
+			con = getConnection();
+			
+			sql = " select * from championdetail where id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dvo = new ChampionDetailVO();
+				
+				dvo.setArmor(rs.getString("armor"));
+				dvo.setArmorperlevel(rs.getString("armorperlevel"));
+				dvo.setAttack(rs.getString("attack"));
+				dvo.setAttackdamage(rs.getString("attackdamage"));
+				dvo.setAttackdamageperlevel(rs.getString("attackdamageperlevel"));
+				dvo.setAttackrange(rs.getString("attackrange"));
+				dvo.setAttackspeed(rs.getString("attackspeed"));
+				dvo.setAttackspeedperlevel(rs.getString("attackspeedperlevel"));
+				dvo.setBlurb(rs.getString("blurb"));
+				dvo.setCrit(rs.getString("crit"));
+				dvo.setCritperlevel(rs.getString("critperlevel"));
+				dvo.setDefense(rs.getString("defense"));
+				dvo.setDifficult(rs.getString("difficult"));
+				dvo.setHp(rs.getString("hp"));
+				dvo.setHpperlevel(rs.getString("hpperlevel"));
+				dvo.setHpregen(rs.getString("hpregen"));
+				dvo.setHpregenperlevel(rs.getString("hpregenperlevel"));
+				dvo.setMagic(rs.getString("magic"));
+				dvo.setMovespeed(rs.getString("movespeed"));
+				dvo.setMp(rs.getString("mp"));
+				dvo.setMpperlevel(rs.getString("mpperlevel"));
+				dvo.setMpregen(rs.getString("mpregen"));
+				dvo.setMpregenperlevel(rs.getString("mpregenperlevel"));
+				dvo.setName(rs.getString("name"));
+				dvo.setPartype(rs.getString("parttype"));
+				dvo.setSpellblock(rs.getString("spellblock"));
+				dvo.setSpellblockperlevel(rs.getString("spellblockperlevel"));
+				dvo.setTitle(rs.getString("title"));
+				dvo.setId(rs.getString("id"));
+				dvo.setName(rs.getString("name"));
+				
+				championDetailList.add(dvo);
+			}
+			System.out.println(" DAO : 챔피언 디테일 조회완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return championDetailList;
+		
+	}
 	
 	
 	

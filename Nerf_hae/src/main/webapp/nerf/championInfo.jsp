@@ -139,7 +139,7 @@
 		                                	<c:forEach var="vo" items="${jugChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
+			                                        <td><a href="./ChampionDetail.hae?name=${vo.c_name }" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
@@ -156,7 +156,7 @@
 		                                	<c:forEach var="vo" items="${midChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
+			                                        <td><a href="./ChampionDetail.hae?name=${vo.c_name }" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
@@ -173,7 +173,7 @@
 		                                	<c:forEach var="vo" items="${adcChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
+			                                        <td><a href="./ChampionDetail.hae?name=${vo.c_name }" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
@@ -190,7 +190,7 @@
 		                                	<c:forEach var="vo" items="${supChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
+			                                        <td><a href="./ChampionDetail.hae?name=${vo.c_name }" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
@@ -207,7 +207,7 @@
 	                                    	<c:forEach var="vo" items="${topChampionInfo}">
 			                                    <tr>
 			                                        <th scope="row">${i }</th>
-			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
+			                                        <td><a href="./ChampionDetail.hae?name=${vo.c_name }" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>

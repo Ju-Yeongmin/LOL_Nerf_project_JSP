@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>${id }님의 전적</title>
+    <title>의 챔피언정보</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -35,6 +35,7 @@
 </head>
 
 <body>
+<c:set var="cList" value="${cList }"/>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -62,7 +63,7 @@
                                    	<span style="text-align: left; padding-left: 10px; font-size: 30px; font-weight: bold; line-height: 52px;">${id }</span>
                                    	<br>
                                     <button type="button" style="margin-top: 18px; margin-left:12px;" class="btn btn-sm btn-primary">전적 갱신</button>
-                                    <p class="mb-0" style="textsize:10dp;">${title }</p>
+                                    <p class="mb-0" style="textsize:10dp;">${cList.title }</p>
                                     <p class="mb-0">${blurb }</p>
                                 </div>
                                
@@ -80,7 +81,7 @@
                               <tbody>
                                   <tr class="text-white">
                                     <th scope="col" style="width:150px;">공격력  </th>
-                                    <td>${attack }</td>
+                                    <td>attack }</td>
                                      </tr>
                                      <tr class="text-white">
                                     <th scope="col">방어력 </th>
