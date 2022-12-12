@@ -44,7 +44,7 @@
         <!-- Content Start -->
         <div class="content" style="width: 580px; margin-top: 300px; margin-left: auto; margin-right: auto;">
         
-	        	<a href="index.html" class="navbar-brand mx-4 mb-3">
+	        	<a href="./Nerf.hae" class="navbar-brand mx-4 mb-3">
 	                    <h3 class="text-primary" style="font-size: calc(4rem + .6vw); padding-left: 70px; letter-spacing: 20px;">Nerf.hae</h3>
 	            </a>
             <!-- Navbar Start -->
