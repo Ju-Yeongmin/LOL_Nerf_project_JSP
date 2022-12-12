@@ -96,6 +96,20 @@ public class NerfFrontController extends HttpServlet {
 			
 		}
 		
+		else if (command.equals("/test12.hae")) {
+			System.out.println(" C : /ChampionUpdate.hae 호출 ");
+			System.out.println(" C : 패턴2 ");
+			
+			// ChampionUpdateAction
+			action = new dosibal();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 		System.out.println(" C : 가상주소 매핑 끝!\n ");
 		// 2. 가상주소 매핑 끝
