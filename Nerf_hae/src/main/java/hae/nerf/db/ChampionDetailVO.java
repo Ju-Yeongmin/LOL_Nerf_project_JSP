@@ -9,7 +9,7 @@ public class ChampionDetailVO {
 	private String attack;
 	private String defense;
 	private String magic;
-	private String difficult;
+	private String difficulty;
 	private String image;
 	private String partype;
 	private String hp;
@@ -96,11 +96,11 @@ public class ChampionDetailVO {
 	public void setMagic(String magic) {
 		this.magic = magic;
 	}
-	public String getDifficult() {
-		return difficult;
+	public String getDifficulty() {
+		return difficulty;
 	}
-	public void setDifficult(String difficult) {
-		this.difficult = difficult;
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 	public String getImage() {
 		return image;
@@ -227,8 +227,8 @@ public class ChampionDetailVO {
 	@Override
 	public String toString() {
 		return "ChampionDetailVO [id=" + id + ", key=" + key + ", name=" + name + ", title=" + title + ", blurb="
-				+ blurb + ", attack=" + attack + ", defense=" + defense + ", magic=" + magic + ", difficult="
-				+ difficult + ", image=" + image + ", partype=" + partype + ", hp=" + hp + ", hpperlevel=" + hpperlevel
+				+ blurb + ", attack=" + attack + ", defense=" + defense + ", magic=" + magic + ", difficulty="
+				+ difficulty + ", image=" + image + ", partype=" + partype + ", hp=" + hp + ", hpperlevel=" + hpperlevel
 				+ ", movespeed=" + movespeed + ", armor=" + armor + ", armorperlevel=" + armorperlevel + ", spellblock="
 				+ spellblock + ", spellblockperlevel=" + spellblockperlevel + ", attackrange=" + attackrange
 				+ ", hpregen=" + hpregen + ", hpregenperlevel=" + hpregenperlevel + ", mpregen=" + mpregen

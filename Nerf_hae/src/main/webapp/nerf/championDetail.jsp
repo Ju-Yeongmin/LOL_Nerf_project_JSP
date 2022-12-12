@@ -6,7 +6,6 @@
 
 <head>
     <meta charset="utf-8">
-    <title>의 챔피언정보</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -57,14 +56,14 @@
                             <div class="owl-carousel testimonial-carousel">
                                 <div class="testimonial-item">
                                     <img class="img-fluid" src="img/5572.png" style="width: 128px; height: 128px; display: inline; float: left; ">
-                                    <div style="padding: 1px 6px; margin-left: 140px; margin-bottom: 0px; margin-right: 954px;" class="alert alert-dark" role="alert">
-                                		레벨 114
+                                    <div style="padding: 1px 6px; margin-left: 140px; margin-bottom: 0px; margin-right: 930px;" class="alert alert-dark" role="alert">
+                                		챔피언 정보
                             		</div>
-                                   	<span style="text-align: left; padding-left: 10px; font-size: 30px; font-weight: bold; line-height: 52px;">${id }</span>
+                                   	<span style="text-align: left; padding-left: 10px; font-size: 30px; font-weight: bold; line-height: 52px;">${cList.get(0).name }</span>
                                    	<br>
-                                    <button type="button" style="margin-top: 18px; margin-left:12px;" class="btn btn-sm btn-primary">전적 갱신</button>
-                                    <p class="mb-0" style="textsize:10dp;">${cList.title }</p>
-                                    <p class="mb-0">${blurb }</p>
+                                    <button type="button" style="margin-top: 18px; margin-left:12px;" class="btn btn-sm btn-primary">${cList.get(0).title }</button>
+<%--                                     <p class="mb-0" style="textsize:10dp;">${cList.get(0).title }</p> --%>
+                                    <p class="mb-0">${cList.get(0).blurb }</p>
                                 </div>
                                
                             </div>
@@ -73,51 +72,112 @@
                     </div>
 		
             <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
+            <div class="container-fluid pt-4 px-4" >
                 <div class="bg-secondary text-center rounded p-4">
                     
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                               <tbody>
                                   <tr class="text-white">
-                                    <th scope="col" style="width:150px;">공격력  </th>
-                                    <td>attack }</td>
+                                    <th scope="col" style="width:200px;">공격력  </th>
+                                    <td>${cList.get(0).attack }</td>
                                      </tr>
                                      <tr class="text-white">
                                     <th scope="col">방어력 </th>
-                                    <td>${defence }</td>
+                                    <td>${cList.get(0).defense }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">마나 </th>
-                                    <td>${magic }</td>
+                                    <td>${cList.get(0).magic }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">난이도 </th>
-                                    <td>${difficulty }</td>
+                                    <td>${cList.get(0).difficulty }</td>
                                       </tr>
                                      <tr class="text-white">
+                                    <th scope="col">난이도 </th>
+                                    <td>${cList.get(0).partype }</td>
+                                      </tr>  
+                                     <tr class="text-white">
                                     <th scope="col">체력</th>
-                                    <td>${hp }</td>
+                                    <td>${cList.get(0).hp }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">레벨당 체력증가량</th>
-                                    <td>${hpperlevel }</td>
+                                    <td>${cList.get(0).hpperlevel }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">마나 </th>
-                                    <td>${mp }</td>
+                                    <td>${cList.get(0).mp }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">레벨당 마나증가량</th>
-                                    <td>${mpperlevel }</td>
+                                    <td>${cList.get(0).mpperlevel }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">방어력 </th>
+                                    <td>${cList.get(0).armor }</td>
+                                      </tr>
+                                     <tr class="text-white">
+                                    <th scope="col">레벨당 방어력증가량</th>
+                                    <td>${cList.get(0).armorperlevel }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">마법저항력 </th>
+                                    <td>${cList.get(0).spellblock }</td>
+                                      </tr>
+                                     <tr class="text-white">
+                                    <th scope="col">레벨당 마법저항력증가량</th>
+                                    <td>${cList.get(0).spellblockperlevel }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">공격범위 </th>
+                                    <td>${cList.get(0).attackrange }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">체력회복량 </th>
+                                    <td>${cList.get(0).hpregen }</td>
+                                      </tr>
+                                       <tr class="text-white">
+                                    <th scope="col">레벨당 체력회복량 </th>
+                                    <td>${cList.get(0).hpregenperlevel }</td>
+                                      </tr>
+                                        <tr class="text-white">
+                                    <th scope="col">마나회복량 </th>
+                                    <td>${cList.get(0).mpregen }</td>
+                                      </tr>
+                                       <tr class="text-white">
+                                    <th scope="col">레벨당 마나회복량 </th>
+                                    <td>${cList.get(0).mpregenperlevel }</td>
+                                      </tr>
+                                     <tr class="text-white">
+                                    <th scope="col">치명타률 </th>
+                                    <td>${cList.get(0).crit }</td>
+                                      </tr>
+                                       <tr class="text-white">
+                                    <th scope="col">레벨당 치명타률 </th>
+                                    <td>${cList.get(0).critperlevel }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">공격피해량 </th>
+                                    <td>${cList.get(0).attackdamage }</td>
+                                      </tr>
+                                       <tr class="text-white">
+                                    <th scope="col">레벨당 공격피해량 </th>
+                                    <td>${cList.get(0).attackdamageperlevel }</td>
                                       </tr>
                                      <tr class="text-white">
                                     <th scope="col">이동속도 </th>
-                                    <td>${movespeed }</td>
+                                    <td>${cList.get(0).movespeed }</td>
                                       </tr>
+                                     
                                      <tr class="text-white">
                                     <th scope="col">공격속도 </th>
-                                    <td>${attackspeed }</td>
+                                    <td>${cList.get(0).attackspeed }</td>
+                                      </tr>
+                                      <tr class="text-white">
+                                    <th scope="col">레벨당 공격속도 </th>
+                                    <td>${cList.get(0).attackspeedperlevel }</td>
                                       </tr>
                                       </tbody>
                         </table>

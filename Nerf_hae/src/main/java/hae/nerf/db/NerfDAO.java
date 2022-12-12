@@ -684,7 +684,7 @@ public class NerfDAO {
 				dvo.setCrit(rs.getString("crit"));
 				dvo.setCritperlevel(rs.getString("critperlevel"));
 				dvo.setDefense(rs.getString("defense"));
-				dvo.setDifficult(rs.getString("difficult"));
+				dvo.setDifficulty(rs.getString("difficulty"));
 				dvo.setHp(rs.getString("hp"));
 				dvo.setHpperlevel(rs.getString("hpperlevel"));
 				dvo.setHpregen(rs.getString("hpregen"));
@@ -696,7 +696,7 @@ public class NerfDAO {
 				dvo.setMpregen(rs.getString("mpregen"));
 				dvo.setMpregenperlevel(rs.getString("mpregenperlevel"));
 				dvo.setName(rs.getString("name"));
-				dvo.setPartype(rs.getString("parttype"));
+				dvo.setPartype(rs.getString("partype"));
 				dvo.setSpellblock(rs.getString("spellblock"));
 				dvo.setSpellblockperlevel(rs.getString("spellblockperlevel"));
 				dvo.setTitle(rs.getString("title"));
@@ -704,8 +704,8 @@ public class NerfDAO {
 				dvo.setName(rs.getString("name"));
 				
 				championDetailList.add(dvo);
+				System.out.println(" DAO : 챔피언 디테일 조회완료");
 			}
-			System.out.println(" DAO : 챔피언 디테일 조회완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
