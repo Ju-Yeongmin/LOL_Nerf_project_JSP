@@ -141,7 +141,7 @@
 			                                        <th scope="row">${i }</th>
 			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
-			                                        	&nbsp;&nbsp;${vo.c_name }
+			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
@@ -158,7 +158,7 @@
 			                                        <th scope="row">${i }</th>
 			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
-			                                        	&nbsp;&nbsp;${vo.c_name }
+			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
@@ -175,7 +175,7 @@
 			                                        <th scope="row">${i }</th>
 			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
-			                                        	&nbsp;&nbsp;${vo.c_name }
+			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
@@ -192,7 +192,7 @@
 			                                        <th scope="row">${i }</th>
 			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
-			                                        	&nbsp;&nbsp;${vo.c_name }
+			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
@@ -209,7 +209,7 @@
 			                                        <th scope="row">${i }</th>
 			                                        <td><a href="./ChampionDetail.hae" style="color: #FFFFFF">
 			                                        	<img src="${vo.c_image }" width="25px">
-			                                        	&nbsp;&nbsp;${vo.c_name }
+			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
 			                                        <td>${vo.c_tier }</td>
 			                                        <td>${vo.c_winrate }</td>
