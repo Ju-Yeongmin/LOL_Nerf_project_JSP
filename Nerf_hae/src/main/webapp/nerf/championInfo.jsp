@@ -83,6 +83,12 @@
 </head>
 
 <body>
+	
+	<div align="center">
+		<a href="./Nerf.hae" class="navbar-brand mx-4 mb-3">
+	            <h3 class="text-primary" style="font-size: calc(4rem + .6vw); letter-spacing: 20px;">Nerf.hae</h3>
+	    </a>
+    </div>
 
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -143,7 +149,26 @@
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
-			                                        <td>${vo.c_tier }</td>
+			                                        <td>
+			                                        	<c:if test="${vo.c_tier.equals('0')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-op.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('1')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-1.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('2')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-2.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('3')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-3.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('4')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-4.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('5')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-5.svg">
+			                                        	</c:if>
+			                                        </td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
 			                                        <td>${vo.c_banrate }</td>
@@ -160,7 +185,26 @@
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
-			                                        <td>${vo.c_tier }</td>
+			                                        <td>
+			                                        	<c:if test="${vo.c_tier.equals('0')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-op.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('1')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-1.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('2')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-2.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('3')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-3.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('4')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-4.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('5')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-5.svg">
+			                                        	</c:if>
+			                                        </td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
 			                                        <td>${vo.c_banrate }</td>
@@ -177,7 +221,26 @@
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
-			                                        <td>${vo.c_tier }</td>
+			                                        <td>
+			                                        	<c:if test="${vo.c_tier.equals('0')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-op.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('1')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-1.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('2')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-2.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('3')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-3.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('4')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-4.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('5')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-5.svg">
+			                                        	</c:if>
+			                                        </td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
 			                                        <td>${vo.c_banrate }</td>
@@ -194,7 +257,26 @@
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
-			                                        <td>${vo.c_tier }</td>
+			                                        <td>
+			                                        	<c:if test="${vo.c_tier.equals('0')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-op.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('1')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-1.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('2')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-2.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('3')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-3.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('4')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-4.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('5')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-5.svg">
+			                                        	</c:if>
+			                                        </td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
 			                                        <td>${vo.c_banrate }</td>
@@ -211,7 +293,26 @@
 			                                        	<img src="${vo.c_image }" width="25px">
 			                                        	&nbsp;&nbsp;${vo.name }
 			                                        </a></td>
-			                                        <td>${vo.c_tier }</td>
+			                                        <td>
+			                                        	<c:if test="${vo.c_tier.equals('0')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-op.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('1')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-1.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('2')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-2.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('3')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-3.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('4')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-4.svg">
+			                                        	</c:if>
+			                                        	<c:if test="${vo.c_tier.equals('5')}">
+			                                        		<img src="https://s-lol-web.op.gg/images/icon/icon-tier-5.svg">
+			                                        	</c:if>
+			                                        </td>
 			                                        <td>${vo.c_winrate }</td>
 			                                        <td>${vo.c_pickrate }</td>
 			                                        <td>${vo.c_banrate }</td>
