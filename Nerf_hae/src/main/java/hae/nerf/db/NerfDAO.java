@@ -348,7 +348,15 @@ public class NerfDAO {
 		        	c_name = "Nunu";
 		        } else if (c_name.equals("Reksai")) {
 		        	c_name = "RekSai";
-		        }
+		        } else if (c_name.equals("Renataglasc")) {
+		        	c_name = "Renata";
+		        } else if (c_name.equals("Twistedfate")) {
+		        	c_name = "TwistedFate";
+		        } else if (c_name.equals("Wukong")) {
+		        	c_name = "MonkeyKing";
+		        } else if (c_name.equals("Xinzhao")) {
+		        	c_name = "XinZhao";
+		        } 
 		        
 		        
 		        pstmt.setString(2, c_name);
@@ -381,7 +389,11 @@ public class NerfDAO {
 		
 		try {
 			con = getConnection();
-			sql = "select * from championinfo where c_category = ? order by c_tier, c_winrate desc";
+			sql = "select A.c_no, A.c_name, A.c_image, A.c_tier, A.c_winrate, A.c_pickrate, A.c_banrate, A.c_category, B.name "
+					+ "from championinfo A JOIN championdetail B "
+					+ "ON A.c_name = B.id "
+					+ "where c_category = ? "
+					+ "order by c_tier, c_winrate desc;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, category);
 			
@@ -398,6 +410,7 @@ public class NerfDAO {
 				vo.setC_tier(rs.getString("c_tier"));
 				vo.setC_winrate(rs.getString("c_winrate"));
 				vo.setC_category(category);
+				vo.setName(rs.getString("name"));
 				
 				list.add(vo);
 			}
@@ -522,13 +535,122 @@ public class NerfDAO {
 			JSONObject data = responseBody.getJSONObject("data");
 			List<String> nameList = getChampionNames();
 			
+			con = getConnection();
+			
 			for (int i = 0; i < nameList.size(); i++) {
+				sql = "insert into championdetail "
+						+ "values(?,?,?,?,?,?,?,?,?,?,"
+						+ "?,?,?,?,?,?,?,?,?,?,"
+						+ "?,?,?,?,?,?,?,?,?,?,?)";
+				pstmt = con.prepareStatement(sql);
+				
 				JSONObject ChampionDetail = data.getJSONObject(nameList.get(i));
-				System.out.println(ChampionDetail.get("id"));
-				System.out.println(ChampionDetail.get("key"));
-				System.out.println(ChampionDetail.get("name"));
-				System.out.println(ChampionDetail.get("title"));
-				System.out.println("---------------------------------------");
+				JSONObject CD_info = ChampionDetail.getJSONObject("info");
+				JSONObject CD_image = ChampionDetail.getJSONObject("image");
+				JSONObject CD_stats = ChampionDetail.getJSONObject("stats");
+				
+				ChampionDetailVO vo = new ChampionDetailVO();
+//				System.out.println(ChampionDetail.get("id"));
+//				vo.setId(ChampionDetail.get("id").toString());
+				pstmt.setString(1, ChampionDetail.get("id").toString());
+//				System.out.println(ChampionDetail.get("key"));
+//				vo.setKey(ChampionDetail.get("key").toString());
+				pstmt.setString(2, ChampionDetail.get("key").toString());
+//				System.out.println(ChampionDetail.get("name"));
+//				vo.setName(ChampionDetail.get("name").toString());
+				pstmt.setString(3, ChampionDetail.get("name").toString());
+//				System.out.println(ChampionDetail.get("title"));
+//				vo.setTitle(ChampionDetail.get("title").toString());
+				pstmt.setString(4, ChampionDetail.get("title").toString());
+//				System.out.println(ChampionDetail.get("blurb"));
+//				vo.setBlurb(ChampionDetail.get("blurb").toString());
+				pstmt.setString(5, ChampionDetail.get("blurb").toString());
+//				
+//				System.out.println(CD_info.get("attack"));
+//				vo.setAttack(CD_info.get("attack").toString());
+				pstmt.setString(6, CD_info.get("attack").toString());
+//				System.out.println(CD_info.get("defense"));
+//				vo.setDefense(CD_info.get("defense").toString());
+				pstmt.setString(7, CD_info.get("defense").toString());
+//				System.out.println(CD_info.get("magic"));
+//				vo.setMagic(CD_info.get("magic").toString());
+				pstmt.setString(8, CD_info.get("magic").toString());
+//				System.out.println(CD_info.get("difficulty"));
+//				vo.setDifficult(CD_info.get("difficulty").toString());
+				pstmt.setString(9, CD_info.get("difficulty").toString());
+//				
+//				System.out.println(CD_image.get("full"));
+//				vo.setImage(CD_image.get("full").toString());
+				pstmt.setString(10, CD_image.get("full").toString());
+//				
+//				System.out.println(ChampionDetail.get("partype"));
+//				vo.setPartype(ChampionDetail.get("partype").toString());
+				pstmt.setString(11, ChampionDetail.get("partype").toString());
+//				
+//				System.out.println(CD_stats.get("hp"));
+//				vo.setHp(CD_stats.get("hp").toString());
+				pstmt.setString(12, CD_stats.get("hp").toString());
+//				System.out.println(CD_stats.get("hpperlevel"));
+//				vo.setHpperlevel(CD_stats.get("hpperlevel").toString());
+				pstmt.setString(13, CD_stats.get("hpperlevel").toString());
+//				System.out.println(CD_stats.get("mp"));
+//				vo.setMp(CD_stats.get("mp").toString());
+				pstmt.setString(14, CD_stats.get("mp").toString());
+//				System.out.println(CD_stats.get("mpperlevel"));
+//				vo.setMpperlevel(CD_stats.get("mpperlevel").toString());
+				pstmt.setString(15, CD_stats.get("mpperlevel").toString());
+//				System.out.println(CD_stats.get("movespeed"));
+//				vo.setMovespeed(CD_stats.get("movespeed").toString());
+				pstmt.setString(16, CD_stats.get("movespeed").toString());
+//				System.out.println(CD_stats.get("armor"));
+//				vo.setArmor(CD_stats.get("armor").toString());
+				pstmt.setString(17, CD_stats.get("armor").toString());
+//				System.out.println(CD_stats.get("armorperlevel"));
+//				vo.setArmorperlevel(CD_stats.get("armorperlevel").toString());
+				pstmt.setString(18, CD_stats.get("armorperlevel").toString());
+//				System.out.println(CD_stats.get("spellblock"));
+//				vo.setSpellblock(CD_stats.get("spellblock").toString());
+				pstmt.setString(19, CD_stats.get("spellblock").toString());
+//				System.out.println(CD_stats.get("spellblockperlevel"));
+//				vo.setSpellblockperlevel(CD_stats.get("spellblockperlevel").toString());
+				pstmt.setString(20, CD_stats.get("spellblockperlevel").toString());
+//				System.out.println(CD_stats.get("attackrange"));
+//				vo.setAttackrange(CD_stats.get("attackrange").toString());
+				pstmt.setString(21, CD_stats.get("attackrange").toString());
+//				System.out.println(CD_stats.get("hpregen"));
+//				vo.setHpregen(CD_stats.get("hpregen").toString());
+				pstmt.setString(22, CD_stats.get("hpregen").toString());
+//				System.out.println(CD_stats.get("hpregenperlevel"));
+//				vo.setHpregenperlevel(CD_stats.get("hpregenperlevel").toString());
+				pstmt.setString(23, CD_stats.get("hpregenperlevel").toString());
+//				System.out.println(CD_stats.get("mpregen"));
+//				vo.setMpregen(CD_stats.get("mpregen").toString());
+				pstmt.setString(24, CD_stats.get("mpregen").toString());
+//				System.out.println(CD_stats.get("mpregenperlevel"));
+//				vo.setMpregenperlevel(CD_stats.get("mpregenperlevel").toString());
+				pstmt.setString(25, CD_stats.get("mpregenperlevel").toString());
+//				System.out.println(CD_stats.get("crit"));
+//				vo.setCrit(CD_stats.get("crit").toString());
+				pstmt.setString(26, CD_stats.get("crit").toString());
+//				System.out.println(CD_stats.get("critperlevel"));
+//				vo.setCritperlevel(CD_stats.get("critperlevel").toString());
+				pstmt.setString(27, CD_stats.get("critperlevel").toString());
+//				System.out.println(CD_stats.get("attackdamage"));
+//				vo.setAttackdamage(CD_stats.get("attackdamage").toString());
+				pstmt.setString(28, CD_stats.get("attackdamage").toString());
+//				System.out.println(CD_stats.get("attackdamageperlevel"));
+//				vo.setAttackdamageperlevel(CD_stats.get("attackdamageperlevel").toString());
+				pstmt.setString(29, CD_stats.get("attackdamageperlevel").toString());
+//				System.out.println(CD_stats.get("attackspeedperlevel"));
+//				vo.setAttackspeedperlevel(CD_stats.get("attackspeedperlevel").toString());
+				pstmt.setString(30, CD_stats.get("attackspeedperlevel").toString());
+//				System.out.println(CD_stats.get("attackspeed"));
+//				vo.setAttackspeed(CD_stats.get("attackspeed").toString());
+				pstmt.setString(31, CD_stats.get("attackspeed").toString());
+				
+				pstmt.executeUpdate();
+//				
+//				System.out.println("---------------------------------------");
 			}
 			
 			
@@ -585,6 +707,64 @@ public class NerfDAO {
 		
 		
 		return List;
+	}
+	
+	public List getChampionDetail(String id) {
+		List championDetailList = new ArrayList();
+		ChampionDetailVO dvo = null;
+		try {
+			con = getConnection();
+			
+			sql = " select * from championdetail where id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dvo = new ChampionDetailVO();
+				
+				dvo.setArmor(rs.getString("armor"));
+				dvo.setArmorperlevel(rs.getString("armorperlevel"));
+				dvo.setAttack(rs.getString("attack"));
+				dvo.setAttackdamage(rs.getString("attackdamage"));
+				dvo.setAttackdamageperlevel(rs.getString("attackdamageperlevel"));
+				dvo.setAttackrange(rs.getString("attackrange"));
+				dvo.setAttackspeed(rs.getString("attackspeed"));
+				dvo.setAttackspeedperlevel(rs.getString("attackspeedperlevel"));
+				dvo.setBlurb(rs.getString("blurb"));
+				dvo.setCrit(rs.getString("crit"));
+				dvo.setCritperlevel(rs.getString("critperlevel"));
+				dvo.setDefense(rs.getString("defense"));
+				dvo.setDifficult(rs.getString("difficult"));
+				dvo.setHp(rs.getString("hp"));
+				dvo.setHpperlevel(rs.getString("hpperlevel"));
+				dvo.setHpregen(rs.getString("hpregen"));
+				dvo.setHpregenperlevel(rs.getString("hpregenperlevel"));
+				dvo.setMagic(rs.getString("magic"));
+				dvo.setMovespeed(rs.getString("movespeed"));
+				dvo.setMp(rs.getString("mp"));
+				dvo.setMpperlevel(rs.getString("mpperlevel"));
+				dvo.setMpregen(rs.getString("mpregen"));
+				dvo.setMpregenperlevel(rs.getString("mpregenperlevel"));
+				dvo.setName(rs.getString("name"));
+				dvo.setPartype(rs.getString("parttype"));
+				dvo.setSpellblock(rs.getString("spellblock"));
+				dvo.setSpellblockperlevel(rs.getString("spellblockperlevel"));
+				dvo.setTitle(rs.getString("title"));
+				dvo.setId(rs.getString("id"));
+				dvo.setName(rs.getString("name"));
+				
+				championDetailList.add(dvo);
+			}
+			System.out.println(" DAO : 챔피언 디테일 조회완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return championDetailList;
+		
 	}
 	
 	

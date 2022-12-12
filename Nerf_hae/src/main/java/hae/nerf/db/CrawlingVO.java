@@ -9,7 +9,15 @@ public class CrawlingVO {
 	private String c_pickrate;
 	private String c_banrate;
 	private String c_category;
+	private String name;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getC_no() {
 		return c_no;
 	}
