@@ -50,7 +50,7 @@
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <form class="d-none d-md-flex ms-4" style="margin-top: 10px; margin-bottom: 10px; height: 50px" action="./FightRecord.hae" >
-                    <input class="form-control bg-dark border-0" type="search" placeholder="소환사명" style="width:400px;" >
+                    <input class="form-control bg-dark border-0" type="search" placeholder="소환사명" style="width:400px;" name="summonerID">
 					<button type="submit" class="btn btn-primary ms-2" style="width: 70px" >검색</button>
                 </form>
             </nav>

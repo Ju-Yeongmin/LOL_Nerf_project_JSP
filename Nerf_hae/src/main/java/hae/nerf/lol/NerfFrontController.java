@@ -96,12 +96,12 @@ public class NerfFrontController extends HttpServlet {
 			
 		}
 		
-		else if (command.equals("/test12.hae")) {
-			System.out.println(" C : /ChampionUpdate.hae 호출 ");
+		else if (command.equals("/updateMatch.hae")) {
+			System.out.println(" C : /updateMatch.hae 호출 ");
 			System.out.println(" C : 패턴2 ");
 			
 			// ChampionUpdateAction
-			action = new dosibal();
+			action = new UpdateMatchAction();
 			
 			try {
 				forward = action.execute(request, response);

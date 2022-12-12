@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -437,7 +438,7 @@ public class NerfDAO {
 				match_num = rs.getInt(1)+1;
 			}
 			
-			sql = "insert into matches values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into matches values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, match_num);
 			pstmt.setString(2,(String)hm.get("matchid"));
@@ -458,6 +459,8 @@ public class NerfDAO {
 			pstmt.setInt(17, (int)hm.get("detector_ward"));
 			pstmt.setString(18,(String)hm.get("wardkp"));
 			pstmt.setString(19,(String)hm.get("items"));
+			pstmt.setString(20,(String)hm.get("summoner_name"));
+			pstmt.setLong(21, (Long)hm.get("gameStartTimestamp"));
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -536,7 +539,53 @@ public class NerfDAO {
 		}
 	}
 	
-	
+	public ArrayList<HashMap<String, Object>> getMatchesList(String name) {
+		ArrayList<HashMap<String,Object>> List = new ArrayList<HashMap<String,Object>>();
+		
+		try {
+			con = getConnection();
+			
+			sql = "select * from matches where summoner_name=? order by gameStartTimestamp desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				HashMap<String, Object> hm = new HashMap<String,Object>();
+				
+				hm.put("win", rs.getString("win"));
+				hm.put("champs", rs.getString("champion_Name"));
+				hm.put("u_num", rs.getInt("u_num"));
+				hm.put("queueid", rs.getInt("queueid"));
+				hm.put("kda", rs.getString("kda"));
+				hm.put("team_kills", rs.getInt("team_total_kills"));
+				hm.put("spells", rs.getString("summoner_spell"));
+				hm.put("statPerks", rs.getString("statPerks"));
+				hm.put("primary_perks", rs.getString("primary_perks"));
+				hm.put("sub_perks", rs.getString("sub_perks"));
+				hm.put("level", rs.getInt("level"));
+				hm.put("gold", rs.getInt("gold"));
+				hm.put("cs", rs.getInt("cs"));
+				hm.put("playtime", rs.getInt("playtime"));
+				hm.put("d_ward", rs.getInt("detector_ward"));
+				hm.put("ward_kp", rs.getString("wardkp"));
+				hm.put("items", rs.getString("items"));
+				
+				List.add(hm);
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		
+		return List;
+	}
 	
 	
 	
