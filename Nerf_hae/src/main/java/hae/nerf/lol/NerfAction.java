@@ -15,7 +15,8 @@ public class NerfAction implements Action {
 		NerfDAO dao = new NerfDAO();
 		dao.test();
 		
-		dao.championJsonParsing();
+		// 한번만 넣으면 쓸일없어서 주석해놨습니다 필요할때 db데이터 날리고 실행해주세요
+//		dao.championJsonParsing();
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
