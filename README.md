@@ -26,7 +26,8 @@
 <br>
 
 ## 3. ERD 설계
-   ![image](https://user-images.githubusercontent.com/110506500/207403666-a21eff84-93a9-49da-bd10-f868f6ebd966.png)
+  ![image](https://user-images.githubusercontent.com/110506500/207405103-90768f3c-55e2-44e0-a650-85f792bc4ecf.png)
+
 
 <br>
 
@@ -37,6 +38,7 @@
         - 구글, 과거 OP.GG 페이지와 같이 페이지 구분 탭 없이 사이트 로고, 소환사 닉네임 검색 기능,
           챔피언 통계 페이지 이동으로 구성 
     ![image](https://user-images.githubusercontent.com/110506500/207396098-a981a414-419d-4d32-a209-af3f2dd1fc79.png)
+<br>
 
 ***
 
@@ -46,6 +48,7 @@
         - 닉네임, 아이콘, 티어, 레벨,  갱신버튼, 역대시즌 티어, 모스트 챔피언 TOP 3(+ 사용 챔피언 최대 7개 출력?),
           최근 10경기 정보, 평점, 최근 10판 모스트 챔피언 TOP 3, 경기 종목별(솔로랭크/자유랭크 ) 보기(보류), 
           북마크(보류), 경기정보 상세보기
+<br>
 
 ***
 
@@ -55,8 +58,11 @@
         - 탑, 정글, 미드, 원딜, 서포터 포지션 별로 카테고리 구분 하여 
           챔피언 별 티어, 승률, 픽률, 벤률 등 챔피언 정보 출력
     ![image](https://user-images.githubusercontent.com/110506500/207396883-bbfbf061-8776-49a9-b8df-e30d85f61950.png)
+<br>
 
 ***
+
+<br>
 
 ## 5. 페이지 특징
 
