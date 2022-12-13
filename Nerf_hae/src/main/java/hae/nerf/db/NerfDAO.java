@@ -35,6 +35,8 @@ public class NerfDAO {
 	private String sql = "";
 
 	// 디비 연결
+	
+	
 	private Connection getConnection() throws Exception {
 		Context initCTX = new InitialContext();
 
@@ -80,6 +82,77 @@ public class NerfDAO {
 		} finally {
 			closeDB();
 		}
+	}
+	
+	private static class TIME_MAXIMUM {
+
+		public static final int SEC = 60;
+
+		public static final int MIN = 60;
+
+		public static final int HOUR = 24;
+
+		public static final int DAY = 30;
+
+		public static final int MONTH = 12;
+
+	}
+
+
+
+	public static String formatTimeString(Long startTime) {
+
+
+
+		long curTime = System.currentTimeMillis();
+
+
+		long diffTime = (curTime - startTime) / 1000;
+
+
+
+		String msg = null;
+
+		if (diffTime < TIME_MAXIMUM.SEC) {
+
+			// sec
+
+			msg = "방금 전";
+
+		} else if ((diffTime /= TIME_MAXIMUM.SEC) < TIME_MAXIMUM.MIN) {
+
+			// min
+
+			msg = diffTime + "분 전";
+
+		} else if ((diffTime /= TIME_MAXIMUM.MIN) < TIME_MAXIMUM.HOUR) {
+
+			// hour
+
+			msg = (diffTime) + "시간 전";
+
+		} else if ((diffTime /= TIME_MAXIMUM.HOUR) < TIME_MAXIMUM.DAY) {
+
+			// day
+
+			msg = (diffTime) + "일 전";
+
+		} else if ((diffTime /= TIME_MAXIMUM.DAY) < TIME_MAXIMUM.MONTH) {
+
+			// day
+
+			msg = (diffTime) + "달 전";
+
+		} else {
+
+			msg =  (diffTime /= TIME_MAXIMUM.MONTH) + "년 전";
+
+		}
+
+
+
+		return msg;
+
 	}
 	
 	/**
@@ -450,6 +523,14 @@ public class NerfDAO {
 			if(rs.next()) {
 				match_num = rs.getInt(1)+1;
 			}
+			//////////////////////////////////
+			
+			sql = "select match_num from matches where matchid=? and summoner_name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,(String)hm.get("matchid"));
+			pstmt.setString(2,(String)hm.get("summoner_name"));
+			rs = pstmt.executeQuery();
+			if (!(rs.next())) {
 			
 			sql = "insert into matches values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
@@ -476,6 +557,7 @@ public class NerfDAO {
 			pstmt.setLong(21, (Long)hm.get("gameStartTimestamp"));
 			
 			pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -692,6 +774,7 @@ public class NerfDAO {
 				hm.put("d_ward", rs.getInt("detector_ward"));
 				hm.put("ward_kp", rs.getString("wardkp"));
 				hm.put("items", rs.getString("items"));
+				hm.put("time", formatTimeString(rs.getLong("gameStartTimestamp")));
 				
 				List.add(hm);
 			}

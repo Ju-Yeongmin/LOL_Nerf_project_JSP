@@ -25,7 +25,7 @@ public class FightRecordAction implements Action {
 		name = name.replaceAll(" ", "");
 		
 		
-		String key ="RGAPI-fd24a1ae-9d38-40c8-a970-f3d19a5352f5";
+		String key ="RGAPI-8908f183-5e67-4788-ab0c-88d93d1bab63";
 		
 		URL url = new URL("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+URLEncoder.encode(name,"UTF-8")+"?api_key="+key);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();

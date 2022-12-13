@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +33,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+ 
+    
 </head>
 
 <body>
@@ -132,7 +135,14 @@
                                     <c:if test='${1999 < m.queueid and m.queueid < 2021 }'>솔로 랭크</c:if>
                                     </td>
                                     <td style="vertical-align:middle; text-align:center; padding:0px;">
-                                    평점 ${((m.kda.split(',')[0]+m.kda.split(',')[2])/m.kda.split(',')[1]).toString().substring(0,3)}<br>
+                                    평점 
+                                    <c:if test="${m.kda.split(',')[1]!=0 }">
+                                    <fmt:formatNumber value="${(m.kda.split(',')[0]+m.kda.split(',')[2])/m.kda.split(',')[1]}" pattern=".0"/>
+                                    </c:if>
+                                    <c:if test="${m.kda.split(',')[1]==0 }">
+                                    <span style="font-size:15px" class="bg-primary text-white">Perfect!</span>
+                                    </c:if>
+                                    <br>
                                     ${m.kda.split(',')[0] }/${m.kda.split(',')[1] }/${m.kda.split(',')[2] }</td>
                                     <td style="vertical-align:middle; text-align:center; padding:0px;">${((m.kda.split(',')[0]+m.kda.split(',')[2])/m.team_kills*100).toString().substring(0,2)}%</td>
                                     <td style="font-family: arial; font-size: 11px; vertical-align: middle; text-align: center;width: 28px;padding: 0px;">
@@ -158,16 +168,28 @@
                                     </c:forEach>
                                     </td>
                                     <td>
-                                    <c:forEach var="it" items="${m.items.split(',') }">
-                                    <img src="img/item/${it }.png" width="20">
-                                    </c:forEach>
+                                    <img src="img/item/${m.items.split(',')[0] }.png" width="20">
+                                    <img src="img/item/${m.items.split(',')[1] }.png" width="20">
+                                    <img src="img/item/${m.items.split(',')[2] }.png" width="20">
+                                    <img src="img/item/${m.items.split(',')[6] }.png" width="20">
+                                    <br>
+                                    <img src="img/item/${m.items.split(',')[3] }.png" width="20">
+                                    <img src="img/item/${m.items.split(',')[4] }.png" width="20">
+                                    <img src="img/item/${m.items.split(',')[5] }.png" width="20">
+                                    <img class="show_new_build tipsy_live" alt="빌드 보기" src="img/item/detail.png" width="20" style="cursor:pointer;">
                                     </td>
                                     <td style="vertical-align:middle; text-align:center; padding:0px; ">
                                     레벨 ${m.level }<br>
                                     <b>골드 ${m.gold }</b><br>
                                     CS ${m.cs } (${Math.round(m.cs / (m.playtime/1000/60) )})</td>
                                     <td style="vertical-align:middle; text-align:center; padding:0px; ">
-                                    ${ Math.floor(m.playtime/1000/60)}분 <br>${Math.floor(m.playtime/1000%60)}초</td>
+                                    <fmt:parseNumber var="minute" value="${m.playtime/1000/60}" integerOnly="true"/>
+                                    <fmt:parseNumber var="second" value="${m.playtime/1000%60}" integerOnly="true"/>
+                                    ${minute }분 ${second }초
+                                    <br>
+                                    ${m.time }
+                                    </td>
+                                    
                                     <td style="vertical-align:middle; text-align:center; padding:0px; ">
                                     <img src="img/item/2055.png" width="20"> ${m.d_ward }<br>
                                     ${m.ward_kp.split(',')[0] } / ${m.ward_kp.split(',')[1] } 
