@@ -23,7 +23,7 @@ public class UpdateMatchAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse responese) throws Exception {
 		String name = (String)request.getParameter("name");
-		String key ="RGAPI-8908f183-5e67-4788-ab0c-88d93d1bab63";
+		String key ="RGAPI-9fb87797-63cd-424b-92bc-bf27d4130a75";
 		
 		
 		URL url = new URL("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+URLEncoder.encode(name,"UTF-8")+"?api_key="+key);
